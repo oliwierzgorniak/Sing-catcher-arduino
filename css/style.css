@@ -1,0 +1,82 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: "Lora", "Times New Roman", Times, serif;
+}
+
+.connecting {
+  text-align: center;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.menu__logo {
+  margin-left: -5em;
+}
+
+.menu__title {
+  margin-top: -0.2em;
+}
+
+.menu ul {
+  padding-left: 1.5em;
+  margin-top: -0.2em;
+}
+
+button {
+  font-family: "Lora", "Times New Roman", Times, serif;
+}
+
+.menu__song-button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  font-size: 1.3rem;
+}
+
+.game {
+  display: grid;
+  gap: 1em 0.5em;
+  grid-template-columns: 1fr auto;
+}
+
+.game__canvas {
+  border: 0.15em solid black;
+  grid-column: 1/3;
+}
+
+.game__text {
+  margin: 0;
+  font-weight: 500;
+}
+
+.game__score {
+  margin: 0;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result__score {
+  margin-bottom: 2.5em;
+  font-size: 1.2rem;
+}
+
+.result__button {
+  border: none;
+  background: none;
+  text-decoration: underline;
+  font-size: 1.1rem;
+  margin-left: -0.8em;
+}
