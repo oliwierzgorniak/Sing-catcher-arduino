@@ -3,8 +3,10 @@ import handleDisplayState from "./handleDisplayState.js";
 import resetGame from "./resetGame.js";
 import { score } from "./updateScore.js";
 
+export let timeoutId;
+
 const handleEnd = () => {
-  setTimeout(() => {
+  timeoutId = setTimeout(() => {
     handleDisplayState("result");
 
     const $score = document.querySelector(".result__score");

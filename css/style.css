@@ -31,6 +31,13 @@ h2 {
   margin-top: -0.2em;
 }
 
+.menu__connect {
+  display: block;
+  margin: auto;
+  margin-top: 3em;
+  transform: translateX(-2.2em);
+}
+
 button {
   font-family: "Lora", "Times New Roman", Times, serif;
 }

@@ -36,7 +36,17 @@ const handleCanvas = () => {
 };
 
 export const changeCatcherPosition = (multiplier) => {
-  catcher.x = multiplier * (CANVAS_WIDTH - CATCHER_WIDTH);
+  const roundedMultiplier = parseInt(multiplier * 10) / 10;
+  let xOffset = (roundedMultiplier - 0.5) * (CANVAS_WIDTH * 0.01);
+
+  let catcherX = catcher.x + xOffset;
+  catcherX = catcherX < 0 ? 0 : catcherX;
+  catcherX =
+    catcherX > CANVAS_WIDTH - CATCHER_WIDTH
+      ? CANVAS_WIDTH - CATCHER_WIDTH
+      : catcherX;
+
+  catcher.x = catcherX;
 };
 
 export default handleCanvas;

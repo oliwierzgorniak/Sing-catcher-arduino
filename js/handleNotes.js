@@ -3,14 +3,13 @@ import { CANVAS_WIDTH, CANVAS_HEIGHT } from "./handleCanvas.js";
 import {
   detectCatchStop,
   moveNotesStop,
+  setMoveNotesStop,
   toggleDetectCatchStop,
-  toggleMoveNotesStop,
 } from "./resetGame.js";
 export const NOTE_WIDTH = 12;
 export const NOTE_HEIGHT = 30;
 
 export let notes = [];
-export let notesIntervalId;
 export let notesMultiplier = 0.5;
 
 const moveNotes = () => {
@@ -30,7 +29,7 @@ const timeoutFunction = (interval) => {
 
   const timeout = interval * (1 - notesMultiplier + 0.5);
   if (!moveNotesStop) setTimeout(() => timeoutFunction(interval), timeout);
-  else toggleMoveNotesStop();
+  else setMoveNotesStop(false);
 };
 
 const handleNotes = (interval = 500) => {

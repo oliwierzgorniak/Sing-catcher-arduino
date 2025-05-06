@@ -1,4 +1,4 @@
-import { notesIntervalId, removeAllNotes } from "./handleNotes.js";
+import { removeAllNotes } from "./handleNotes.js";
 import updateScore, { resetScore } from "./updateScore.js";
 
 export let drawOnCanvasStop = false;
@@ -8,17 +8,21 @@ export let moveNotesStop = false;
 
 const resetGame = () => {
   removeAllNotes();
-  moveNotesStop = true;
   resetScore();
-  drawOnCanvasStop = true;
-  detectCatchStop = true;
   updateScore(0);
+
+  if (gameWasPlayed) {
+    moveNotesStop = true;
+    drawOnCanvasStop = true;
+    detectCatchStop = true;
+    setGameWasPlayed(false);
+  }
 };
 
 export const toggleDrawOnCanvasStop = () =>
   (drawOnCanvasStop = !drawOnCanvasStop);
 export const toggleDetectCatchStop = () => (detectCatchStop = !detectCatchStop);
-export const toggleMoveNotesStop = () => (moveNotesStop = !moveNotesStop);
+export const setMoveNotesStop = (value) => (moveNotesStop = value);
 export const setGameWasPlayed = (value) => (gameWasPlayed = value);
 
 export default resetGame;
