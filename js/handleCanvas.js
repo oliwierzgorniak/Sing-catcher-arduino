@@ -36,7 +36,9 @@ const handleCanvas = () => {
 };
 
 export const changeCatcherPosition = (multiplier) => {
-  const roundedMultiplier = parseInt(multiplier * 10) / 10;
+  multiplier = multiplier > 0.517 && multiplier < 0.5205 ? 0.5 : multiplier;
+  let roundedMultiplier = parseInt(multiplier * 100) / 100;
+
   let xOffset = (roundedMultiplier - 0.5) * (CANVAS_WIDTH * 0.01);
 
   let catcherX = catcher.x + xOffset;
