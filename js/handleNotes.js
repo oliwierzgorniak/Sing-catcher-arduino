@@ -1,26 +1,43 @@
 import detectCatch from "./detectCatch.js";
 import { CANVAS_WIDTH, CANVAS_HEIGHT } from "./handleCanvas.js";
-import { detectCatchStop, toggleDetectCatchStop } from "./resetGame.js";
+import {
+  detectCatchStop,
+  moveNotesStop,
+  toggleDetectCatchStop,
+  toggleMoveNotesStop,
+} from "./resetGame.js";
 export const NOTE_WIDTH = 12;
 export const NOTE_HEIGHT = 30;
 
 export let notes = [];
 export let notesIntervalId;
+export let notesMultiplier = 0.5;
 
 const moveNotes = () => {
-  notes = notes.map(({ x, y }) => ({ x: x, y: y + CANVAS_HEIGHT * 0.01 }));
+  notes = notes.map(({ x, y }) => ({
+    x: x,
+    y: y + CANVAS_HEIGHT * 0.02 * notesMultiplier,
+  }));
   detectCatch(notes);
 
-  console.log(detectCatchStop);
   if (!detectCatchStop) requestAnimationFrame(moveNotes);
   else toggleDetectCatchStop();
 };
 
+const timeoutFunction = (interval) => {
+  const x = Math.floor(Math.random() * (CANVAS_WIDTH - NOTE_WIDTH));
+  notes.push({ x: x, y: -NOTE_HEIGHT });
+
+  const timeout = interval * (1 - notesMultiplier + 0.5);
+  if (!moveNotesStop) setTimeout(() => timeoutFunction(interval), timeout);
+  else toggleMoveNotesStop();
+};
+
 const handleNotes = (interval = 500) => {
-  notesIntervalId = setInterval(() => {
-    const x = Math.floor(Math.random() * (CANVAS_WIDTH - NOTE_WIDTH));
-    notes.push({ x: x, y: -NOTE_HEIGHT });
-  }, interval);
+  const initialTimeout = interval * (1 - notesMultiplier + 0.1);
+  setTimeout(() => {
+    timeoutFunction(interval);
+  }, initialTimeout);
 
   requestAnimationFrame(moveNotes);
 };
@@ -30,5 +47,7 @@ export const removeNote = (i) => {
 };
 
 export const removeAllNotes = () => (notes = []);
+
+export const setNotesMultiplier = (value) => (notesMultiplier = value + 0.1);
 
 export default handleNotes;

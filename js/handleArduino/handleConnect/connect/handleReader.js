@@ -1,4 +1,5 @@
 import { catcher, changeCatcherPosition } from "../../../handleCanvas.js";
+import { setNotesMultiplier } from "../../../handleNotes.js";
 import getLineBreakTransformer from "../handleReader/getLineBreakTransformer.js";
 
 const handleReader = async (port) => {
@@ -37,6 +38,7 @@ const handleReader = async (port) => {
           const json = JSON.parse(value);
 
           changeCatcherPosition(json.joystick);
+          setNotesMultiplier(json.potentiometer);
         } catch (error) {
           console.log(error);
         }

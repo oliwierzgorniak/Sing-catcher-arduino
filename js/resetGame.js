@@ -4,10 +4,11 @@ import updateScore, { resetScore } from "./updateScore.js";
 export let drawOnCanvasStop = false;
 export let detectCatchStop = false;
 export let gameWasPlayed = false;
+export let moveNotesStop = false;
 
 const resetGame = () => {
   removeAllNotes();
-  clearInterval(notesIntervalId);
+  moveNotesStop = true;
   resetScore();
   drawOnCanvasStop = true;
   detectCatchStop = true;
@@ -17,6 +18,7 @@ const resetGame = () => {
 export const toggleDrawOnCanvasStop = () =>
   (drawOnCanvasStop = !drawOnCanvasStop);
 export const toggleDetectCatchStop = () => (detectCatchStop = !detectCatchStop);
+export const toggleMoveNotesStop = () => (moveNotesStop = !moveNotesStop);
 export const setGameWasPlayed = (value) => (gameWasPlayed = value);
 
 export default resetGame;
