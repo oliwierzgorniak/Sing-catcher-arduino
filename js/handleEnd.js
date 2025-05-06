@@ -1,13 +1,13 @@
+import { sendEndSignal } from "./handleArduino/handleConnect/connect/handleWrtier.js";
+import handleDisplayState from "./handleDisplayState.js";
+import resetGame from "./resetGame.js";
 import { score } from "./updateScore.js";
 
 const handleEnd = () => {
   setTimeout(() => {
-    const $game = document.querySelector(".game");
-    $game.classList.add("hidden");
-    const $result = document.querySelector(".result");
-    $result.classList.remove("hidden");
+    handleDisplayState("result");
 
-    const $score = $result.querySelector(".result__score");
+    const $score = document.querySelector(".result__score");
     $score.textContent = score;
 
     const $menuScore = document.querySelector(".menu__song-score");
@@ -17,6 +17,9 @@ const handleEnd = () => {
     }
 
     if (Number($menuScore.textContent) < score) $menuScore.textContent = score;
+
+    resetGame();
+    sendEndSignal();
   }, 25000);
 };
 

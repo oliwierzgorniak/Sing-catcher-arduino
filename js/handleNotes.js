@@ -11,6 +11,7 @@ const moveNotes = () => {
   notes = notes.map(({ x, y }) => ({ x: x, y: y + CANVAS_HEIGHT * 0.01 }));
   detectCatch(notes);
 
+  console.log(detectCatchStop);
   if (!detectCatchStop) requestAnimationFrame(moveNotes);
   else toggleDetectCatchStop();
 };

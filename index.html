@@ -4,18 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Singing catcher</title>
-    <script defer type="module" src="./index/main.js"></script>
+    <script defer type="module" src="./js/main.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="index/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <section class="menu">
-      <img class="menu__logo" src="./logo.svg" alt="Singing Catcher logo" />
+      <img
+        class="menu__logo"
+        src="./assets/logo.svg"
+        alt="Singing Catcher logo"
+      />
       <ul>
         <li>
           <button class="menu__song-button">
@@ -24,9 +28,8 @@
         </li>
       </ul>
     </section>
-    <section class="connecting hidden">
-      <h2 class="connecting__title">Scan with your phone</h2>
-      <div class="connecting__qr" id="qr"></div>
+    <section class="not-connected hidden">
+      <h2 class="not-connected">The controller is not supported/connected</h2>
     </section>
     <article class="game hidden">
       <p class="game__text"></p>
@@ -34,9 +37,9 @@
       <canvas class="game__canvas" width="500" height="300"></canvas>
       <audio
         class="game__audio hidden"
-        src="./Witaj_majowa_jutrzenko.mp3"
+        src="./assets/Witaj_majowa_jutrzenko.mp3"
       ></audio>
-      <img class="game__note hidden" src="./note.png" alt="" />
+      <img class="game__note hidden" src="./assets/note.png" alt="" />
     </article>
     <section class="result hidden">
       <h2 class="result__title">You scored:</h2>

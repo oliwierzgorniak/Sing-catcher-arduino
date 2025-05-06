@@ -1,3 +1,4 @@
+import { sendCatchSignal } from "./handleArduino/handleConnect/connect/handleWrtier.js";
 import {
   CANVAS_HEIGHT,
   catcher,
@@ -17,6 +18,7 @@ const detectCatch = () => {
     ) {
       updateScore(1);
       removeNote(i);
+      sendCatchSignal();
     }
   });
 };

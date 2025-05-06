@@ -1,4 +1,3 @@
-import { peer } from "./main.js";
 import handleNotes, { notes, NOTE_HEIGHT, NOTE_WIDTH } from "./handleNotes.js";
 import { drawOnCanvasStop, toggleDrawOnCanvasStop } from "./resetGame.js";
 export const CANVAS_WIDTH = 500;
@@ -30,20 +29,14 @@ const handleCanvas = () => {
   const ctx = $canvas.getContext("2d");
   ctx.fillRect(100, 100, 100, 100);
 
-  peer.on("data", (data) => {
-    let cutData = Number(data);
-    if (cutData < -45) cutData = -45;
-    if (cutData > 45) cutData = 45;
-    const multiplier = (cutData + 45) / 90;
-
-    // console.log(multiplier);
-    catcher.x = multiplier * (CANVAS_WIDTH - 100);
-  });
-
   handleNotes();
 
   const $noteImg = document.querySelector(".game__note");
   requestAnimationFrame(() => drawOnCanvas(ctx, $noteImg));
+};
+
+export const changeCatcherPosition = (multiplier) => {
+  catcher.x = multiplier * (CANVAS_WIDTH - CATCHER_WIDTH);
 };
 
 export default handleCanvas;
